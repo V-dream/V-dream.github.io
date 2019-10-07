@@ -10,16 +10,16 @@
 20190602
 
 4.1.1 ls
-0.	Ctrl +L=clear
-	Ctrl+C 终止命令
-1.	ls -a：	列出所有文件（包括隐藏文件，以‘.‘开头）
-	ls  -l：（long格式显示）——大小以字节显示
-	ls-lh：人性化显示：大小类似于windows
-	ls  -i：查询i节点
-2.	所有者（u）只能是一个，所属组（g）是一个集合，剩余的是其他者（o）
-3.	linux没有创建时间，只有最后修改时间
-4.	-：文件;		d：目录;		l：软链接文件		b：可按快随机读写的设备		c：	一次性读取设备（键盘，鼠标等）
-5.	rwx-xr-wx:	r：读	w：写	x：执行
+0.Ctrl +L=clear
+     Ctrl+C 终止命令
+1.ls -a：	列出所有文件（包括隐藏文件，以‘.‘开头）
+    ls  -l：（long格式显示）——大小以字节显示
+    ls-lh：人性化显示：大小类似于windows
+    ls  -i：查询i节点
+2.所有者（u）只能是一个，所属组（g）是一个集合，剩余的是其他者（o）
+3.linux没有创建时间，只有最后修改时间
+4.-：文件;		d：目录;		l：软链接文件		b：可按快随机读写的设备		c：	一次性读取设备（键盘，鼠标等）
+5.rwx-xr-wx:	r：读	w：写	x：执行
 
 4.1.2 目录及文件的相关操作
 1.	mkdir：创建目录，如：mkdir /tmp/xiaodianying
@@ -143,7 +143,11 @@ eg:	1)chmod a+w [file/dir]:所有人都加入可写权限
 	type	也是通过PATH去找
 	whereis   [-bmsu]   filename/dirname:只在指定的目录中查找
 	locate   [-ir]   keyword: 	i：忽略大小写	r：后面可以接正则表达式的显示方式
-								locate   -S：用于查找所使用的数据库文件的数据使用量，									但是一般情况下数据库文件每天更新一次，当需要手动									更新的时候就需要使用updatedb，它会去读											取/etc/updatedb.conf的文件的设置，然后去更新数据									库。
+								locate   -S：用于查找所使用的数据库文件的数据使用量，									
+								但是一般情况下数据库文件每天更新一次，当需要手动									
+								更新的时候就需要使用updatedb，它会去读											
+								取/etc/updatedb.conf的文件的设置，然后去更新数据									
+								库。
 3.	Linux of time:
 	(1)	atime(access time)	→	文件读取时该时间改变
 	(2)	ctime(status time)		→	文件状态发生变化时此时间改变
@@ -158,8 +162,10 @@ eg:	1)chmod a+w [file/dir]:所有人都加入可写权限
 				eg:→	find  /etc passwd  -newer   /etc passwd
 	（2）与使用者或者用户有关的选项
 		1）-uid/gid  [n]：				→	uid在/etc/passwd中，gid在/etc/group中
-		2）-user/group   [name]：	→	如	find  /home   -user   yueruijun：查找												home下属于yueruijun的文件
-		3）-nouser/nogroup：		→	如	find   /   -nouser：查找 / 目录文件的拥有											者不在/etc/passwd中的文件
+		2）-user/group   [name]：	→	如	find  /home   -user   yueruijun：查找												
+		home下属于yueruijun的文件
+		3）-nouser/nogroup：		→	如	find   /   -nouser：查找 / 目录文件的拥有											
+		者不在/etc/passwd中的文件
 	（3）与文件权限及名称有关的参数
 		1）-name   [filename]：查找文件名为filename的文件
 		2）
@@ -173,15 +179,20 @@ eg:	1)chmod a+w [file/dir]:所有人都加入可写权限
 4.	ls -l		==		ll
 5.	inode(https://www.cnblogs.com/xiexj/p/7214502.html)
 	1)	stat :查看某个文件或目录的inode信息
-	2)	inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个		区域。一个是数据区，存放文件数据；另一个是inode区（inode table），存放		inode所包含的信息。
+	2)	inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个		
+	区域。一个是数据区，存放文件数据；另一个是inode区（inode table），存放		
+	inode所包含的信息。
 	3)	查看每个硬盘分区的inode总数和已经使用的数量，可以使用df命令。
-	4)	Unix/linux系统内部不使用文件名，而使用inode号码来识别文件。对于系统来说，		文件名只是inode号码便于识别的别称或者绰号。
+	4)	Unix/linux系统内部不使用文件名，而使用inode号码来识别文件。对于系统来说，		
+	文件名只是inode号码便于识别的别称或者绰号。
 6.	Linux文件系统采用异步处理的方式
 7.挂载与挂载点
-	(1)	一个挂载点就是一个文件夹，将分区挂载到一个挂载点，挂载点就成了分区的入口。		 没有挂载分区的挂载点将使用根目录的空间，没有挂载到挂载点的分区无法访问
+	(1)	一个挂载点就是一个文件夹，将分区挂载到一个挂载点，挂载点就成了分区的入口。		 
+	没有挂载分区的挂载点将使用根目录的空间，没有挂载到挂载点的分区无法访问
 	(2)	注意点:
 		1)	挂载点必须是一个目录。　　　　　
- 		2)	一个分区挂载在一个已存在的目录上，这个目录可以不为空，但挂载后这个目 			录下以前的内容将不可用。
+ 		2)	一个分区挂载在一个已存在的目录上，这个目录可以不为空，但挂载后这个目 			
+		录下以前的内容将不可用。
 8.	df   -i:显示如图所示的信息
 
 
